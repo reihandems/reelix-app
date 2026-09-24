@@ -7,7 +7,7 @@ export default function Search({ query, inputQuery, onSearchResult }) {
   return (
     <>
       <form onSubmit={handleSubmit} className="w-full sm:w-150">
-        <label className="input bg-neutral-950 border-0 rounded-xl shadow h-14 p-4 w-full">
+        <label className="input bg-neutral-950 border-0 rounded-xl shadow sm:h-14 sm:p-4 w-full">
           <i className="fa-solid fa-magnifying-glass"></i>
           <input
             type="search"

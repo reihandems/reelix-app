@@ -5,10 +5,10 @@ export default function HeroBottom({ query, inputQuery, onSearchResult, searchMo
   return (
     <>
       <div className="flex flex-col items-center justify-center grow bg-radial from-accent/15 to-transparent to-70%">
-        <div className="text-5xl font-bold">
+        <div className="sm:text-5xl text-4xl font-bold">
           Reel<span className="text-accent">ix</span>
         </div>
-        <div className="text-sm opacity-50 text-center font-semibold mt-2 mb-5 max-w-120">
+        <div className="sm:text-sm text-xs opacity-50 text-center sm:font-semibold mt-2 mb-5 max-w-120">
           Discover your next favorite movie with pristine curation,
           high-fidelity metadata, and personal screeening journals
         </div>

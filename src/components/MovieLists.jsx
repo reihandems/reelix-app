@@ -11,7 +11,7 @@ export default function MovieLists({ movies }) {
                 {movies.length} Available
               </span>
             </div>
-            <p className="text-xs font-bold">
+            <p className="text-xs font-bold hidden sm:block">
               SORT: <span className="text-accent">CURATED RANK</span>
             </p>
           </div>
