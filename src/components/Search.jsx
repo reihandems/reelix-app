@@ -1,7 +1,13 @@
-export default function Search({query, inputQuery}) {
-    return (
-      <>
-        <label className="input bg-neutral-950 border-0 rounded-xl shadow h-14 p-4 w-full sm:w-150">
+export default function Search({ query, inputQuery, onSearchResult }) {
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    onSearchResult();
+  }
+  return (
+    <>
+      <form onSubmit={handleSubmit} className="w-full sm:w-150">
+        <label className="input bg-neutral-950 border-0 rounded-xl shadow h-14 p-4 w-full">
           <i className="fa-solid fa-magnifying-glass"></i>
           <input
             type="search"
@@ -12,6 +18,7 @@ export default function Search({query, inputQuery}) {
           />
           <kbd className="kbd kbd-sm">Enter</kbd>
         </label>
-      </>
-    );
+      </form>
+    </>
+  );
 }
