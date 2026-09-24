@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+
+@import "tailwindcss";
+@plugin "daisyui" {
+  themes: dark --default;
+}
+
+@theme {
+  --font-jakarta: "Plus Jakarta Sans", sans-serif;
+}
+
+@plugin "daisyui/theme" {
+  name: "reelix";
+  default: true;
+  prefersdark: true;
+
+  --color-primary: #F59E0B;
+  --color-secondary: #8B95A5;
+  --color-accent: #E5A93C;
+  --color-neutral: #0C0D12;
+
+  --color-base-100: #0C0D12;
+  --color-base-200: #14151B;
+  --color-base-300: #1C1D24;
+
+  --color-base-content: #FFFFFF;
+}
