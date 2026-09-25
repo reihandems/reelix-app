@@ -14,7 +14,7 @@ function App() {
   const [query, setQuery] = useState("")
   const [movies, setMovies] = useState(MovieData);
   const [watched, setWatched] = useState(WatchedData);
-  const [searchMovie, setSearchMovie] = useState([])
+  const [searchMovie, setSearchMovie] = useState([]);
 
   function onSearchResult() {
     setSearchMovie(
@@ -22,6 +22,17 @@ function App() {
         return movie.Title.toLowerCase().includes(query.toLowerCase());
       })
     )
+  }
+
+  function addToWatchlists(movie) {
+    const newWatchedMovie = {
+      ...movie,
+      runtime: 0,
+      imdbRating: 0,
+      userRating: 0
+    };
+
+    setWatched([...watched, newWatchedMovie])
   }
 
   return (
@@ -38,7 +49,7 @@ function App() {
       </Hero>
 
       <div className="grid grid-cols-6 gap-8 p-6">
-        <MovieLists movies={movies} />
+        <MovieLists movies={movies} watched={watched} addToWatchlists={addToWatchlists} />
         <WatchedLists watched={watched} />
       </div>
     </>
