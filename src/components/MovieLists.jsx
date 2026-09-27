@@ -2,8 +2,15 @@ import MovieCard from "./MovieCard";
 import Loader from "./Loader";
 import ErrorBadge from "./ErrorBadge";
 
-export default function MovieLists({ movies, addToWatchlists, watched, isLoading, error }) {
-  
+export default function MovieLists({
+  movies,
+  addToWatchlists,
+  watched,
+  isLoading,
+  error,
+  handleSelectedMovie,
+  selected
+}) {
   return (
     <>
       <div className="col-span-6 md:col-span-4 flex flex-col gap-5">
@@ -48,6 +55,8 @@ export default function MovieLists({ movies, addToWatchlists, watched, isLoading
                   movie={movie}
                   addToWatchlists={addToWatchlists}
                   watched={watched}
+                  handleSelectedMovie={handleSelectedMovie}
+                  selected={selected}
                 />
               ))}
           </div>

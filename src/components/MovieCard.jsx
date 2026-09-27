@@ -1,7 +1,15 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCirclePlus, faCircleCheck } from "@fortawesome/free-solid-svg-icons";
 
-export default function MovieCard({ movie, addToWatchlists, watched }) {
+import MovieDetail from "./MovieDetail";
+
+export default function MovieCard({
+  movie,
+  addToWatchlists,
+  watched,
+  handleSelectedMovie,
+  selected,
+}) {
   const isWatched = watched.some((w) => w.imdbID === movie.imdbID);
   return (
     <>
@@ -10,12 +18,25 @@ export default function MovieCard({ movie, addToWatchlists, watched }) {
           <img
             src={movie.Poster}
             alt={`Poster of ${movie.Title}`}
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover cursor-pointer"
+            onClick={() => {
+              document.getElementById("movieDetail").showModal();
+              handleSelectedMovie(movie);
+            }}
           />
         </figure>
         <div className="card-body flex">
           <p className="text-sm font-semibold text-gray-500">{movie.Year}</p>
-          <h2 className="card-title">{movie.Title}</h2>
+
+          <h2
+            className="card-title hover:cursor-pointer hover:decoration-solid"
+            onClick={() => {
+              document.getElementById("movieDetail").showModal();
+              handleSelectedMovie(movie);
+            }}
+          >
+            {movie.Title}
+          </h2>
 
           <button
             className={`btn ${isWatched ? "btn-disabled" : ""}`}
@@ -25,6 +46,8 @@ export default function MovieCard({ movie, addToWatchlists, watched }) {
             Add{isWatched ? "ed" : ""} To Watched
           </button>
         </div>
+
+        <MovieDetail selected={selected} />
       </div>
     </>
   );
