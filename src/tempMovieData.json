@@ -1,17 +1,17 @@
 [
   {
-    "imdbID": "tt15398776",
-    "Title": "Oppenheimer",
-    "Year": "2013",
+    "imdbID": "tt9140554",
+    "Title": "Loki",
+    "Year": "2021–2023",
     "Poster":
-      "https://m.media-amazon.com/images/M/MV5BMDBmYTZjNjUtN2M1MS00MTQ2LTk2ODgtNzc2M2QyZGE5NTVjXkEyXkFqcGdeQXVyNzAwMjU2MTY@._V1_SX300.jpg"
+      "https://m.media-amazon.com/images/M/MV5BYzA2YjM2ZWQtYTZhMS00OTI3LTlhYzQtZjBiZWZkMDdlNjA5XkEyXkFqcGc@._V1_QL75_UX380_CR0,0,380,562_.jpg"
   },
   {
-    "imdbID": "tt1517268",
-    "Title": "Barbie",
-    "Year": "2023",
+    "imdbID": "tt0120812",
+    "Title": "Rush Hour",
+    "Year": "1998",
     "Poster":
-      "https://m.media-amazon.com/images/M/MV5BNjU3N2QxNzYtMjk1NC00MTc4LTk1NTQtMmUxNTljM2I0NDA5XkEyXkFqcGdeQXVyODE5NzE3OTE@._V1_SX300.jpg"
+      "https://m.media-amazon.com/images/M/MV5BMGZiMzViNmEtNTNlZi00MzFmLTk5NTEtNDE2OTUzNmNlMTY4XkEyXkFqcGc@._V1_SX300.jpg"
   },
   {
     "imdbID": "tt8589698",
@@ -19,5 +19,12 @@
     "Year": "2023",
     "Poster":
       "https://m.media-amazon.com/images/M/MV5BYzE4MTllZTktMTIyZS00Yzg1LTg1YzAtMWQwZTZkNjNkODNjXkEyXkFqcGdeQXVyMTUzMTg2ODkz._V1_SX300.jpg"
+  },
+  {
+    "imdbID": "tt1856101",
+    "Title": "Blade Runner 2049",
+    "Year": "2017",
+    "Poster":
+      "https://m.media-amazon.com/images/M/MV5BNzA1Njg4NzYxOV5BMl5BanBnXkFtZTgwODk5NjU3MzI@._V1_QL75_UX380_CR0,0,380,562_.jpg"
   }
 ]

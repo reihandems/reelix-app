@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import MovieData from "./tempMovieData.json"
 import WatchedData from "./tempWatchedData.json"
@@ -15,13 +15,51 @@ function App() {
   const [movies, setMovies] = useState(MovieData);
   const [watched, setWatched] = useState(WatchedData);
   const [searchMovie, setSearchMovie] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
+
+  const API_KEY = "a22af6f5";
+
+  useEffect(() => {
+    async function fetchMovie() {
+      if (query !== "") {
+        try {
+          setIsLoading(true);
+
+          const response = await fetch(
+            `http://www.omdbapi.com/?apikey=${API_KEY}&s=${searchMovie}`,
+          );
+
+          if (!response.ok) {
+            throw new Error("Could not fetch data!")
+          }
+          
+          const data = await response.json();
+
+          if (data.Response === "False") {
+            throw new Error(data.Error)
+          }
+
+          setMovies(data.Search)
+          console.log(data)
+
+        }
+        catch (error) {
+          setError(error.message)
+        }
+        finally {
+          setIsLoading(false);
+        }
+      }
+
+    };
+
+    fetchMovie();
+
+  }, [searchMovie]);
 
   function onSearchResult() {
-    setSearchMovie(
-      movies.filter((movie) => {
-        return movie.Title.toLowerCase().includes(query.toLowerCase());
-      })
-    )
+    setSearchMovie(query)
   }
 
   function addToWatchlists(movie) {
@@ -49,7 +87,13 @@ function App() {
       </Hero>
 
       <div className="grid grid-cols-6 gap-8 p-6">
-        <MovieLists movies={movies} watched={watched} addToWatchlists={addToWatchlists} />
+        <MovieLists
+          movies={movies}
+          watched={watched}
+          addToWatchlists={addToWatchlists}
+          isLoading={isLoading}
+          error={error}
+        />
         <WatchedLists watched={watched} />
       </div>
     </>

@@ -3,8 +3,6 @@ import { faCirclePlus, faCircleCheck } from "@fortawesome/free-solid-svg-icons";
 
 export default function MovieCard({ movie, addToWatchlists, watched }) {
   const isWatched = watched.some((w) => w.imdbID === movie.imdbID);
-
-  console.log(movie.Title, isWatched);
   return (
     <>
       <div className="card bg-neutral-950 flex-1 min-w-48 shadow-sm/30 rounded-xl">

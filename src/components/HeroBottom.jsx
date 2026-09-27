@@ -1,7 +1,7 @@
 import Search from "./Search";
-import SearchResult from "./SearchResult";
+// import SearchResult from "./SearchResult";
 
-export default function HeroBottom({ query, inputQuery, onSearchResult, searchMovie }) {
+export default function HeroBottom({ query, inputQuery, onSearchResult }) {
   return (
     <>
       <div className="flex flex-col items-center justify-center grow bg-radial from-accent/15 to-transparent to-70%">
@@ -35,7 +35,7 @@ export default function HeroBottom({ query, inputQuery, onSearchResult, searchMo
           </span>
         </div>
 
-        <SearchResult searchMovie={searchMovie} query={query} />
+        {/* <SearchResult searchMovie={searchMovie} query={query} /> */}
       </div>
     </>
   );
