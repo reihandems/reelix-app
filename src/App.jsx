@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 
 import MovieData from "./tempMovieData.json"
 import WatchedData from "./tempWatchedData.json"
-import CONFIG from "./config/config"
 
 import NavBar from "./components/NavBar";
 import Hero from "./components/Hero";
@@ -19,7 +18,7 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
 
-  const API_KEY = CONFIG.OMDB_API_KEY;
+  const API_KEY = import.meta.env.VITE_OMDB_API_KEY
 
   useEffect(() => {
     async function fetchMovie() {
