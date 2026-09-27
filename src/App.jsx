@@ -27,7 +27,7 @@ function App() {
           setIsLoading(true);
 
           const response = await fetch(
-            `http://www.omdbapi.com/?apikey=${API_KEY}&s=${searchMovie}`,
+            `https://www.omdbapi.com/?apikey=${API_KEY}&s=${searchMovie}`,
           );
 
           if (!response.ok) {
