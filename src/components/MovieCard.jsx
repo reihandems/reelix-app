@@ -58,6 +58,7 @@ export default function MovieCard({
           setIsLoading={setIsLoading}
           isWatched={isWatched}
           addToWatchlists={addToWatchlists}
+          watched={watched}
         />
       </div>
     </>

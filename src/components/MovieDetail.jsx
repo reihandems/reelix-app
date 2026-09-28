@@ -5,13 +5,11 @@ import {faCircleCheck, faShareNodes} from "@fortawesome/free-solid-svg-icons"
 
 import MovieDetailLoader from "./MovieDetailLoader";
 
-export default function MovieDetail({ selected, setError, isWatched, addToWatchlists }) {
+export default function MovieDetail({ selected, setError, addToWatchlists, watched }) {
   const [movie, setMovie] = useState({});
   const [isLoading, setIsLoading] = useState(false);
 
   const API_KEY = import.meta.env.VITE_OMDB_API_KEY;
-
-  console.log(movie);
 
   useEffect(() => {
     async function fetchDetail() {
@@ -41,6 +39,9 @@ export default function MovieDetail({ selected, setError, isWatched, addToWatchl
 
     fetchDetail();
   }, [selected]);
+
+  const isWatched = watched.some((w) => w.imdbID === movie.imdbID);
+  
 
   return (
     <>
