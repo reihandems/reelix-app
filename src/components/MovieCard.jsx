@@ -9,8 +9,12 @@ export default function MovieCard({
   watched,
   handleSelectedMovie,
   selected,
+  setError,
+  isLoading,
+  setIsLoading,
 }) {
   const isWatched = watched.some((w) => w.imdbID === movie.imdbID);
+
   return (
     <>
       <div className="card bg-neutral-950 flex-1 min-w-48 shadow-sm/30 rounded-xl">
@@ -21,7 +25,7 @@ export default function MovieCard({
             className="w-full h-full object-cover cursor-pointer"
             onClick={() => {
               document.getElementById("movieDetail").showModal();
-              handleSelectedMovie(movie);
+              handleSelectedMovie(movie.imdbID);
             }}
           />
         </figure>
@@ -32,7 +36,7 @@ export default function MovieCard({
             className="card-title hover:cursor-pointer hover:decoration-solid"
             onClick={() => {
               document.getElementById("movieDetail").showModal();
-              handleSelectedMovie(movie);
+              handleSelectedMovie(movie.imdbID);
             }}
           >
             {movie.Title}
@@ -47,7 +51,12 @@ export default function MovieCard({
           </button>
         </div>
 
-        <MovieDetail selected={selected} />
+        <MovieDetail
+          selected={selected}
+          setError={setError}
+          isLoading={isLoading}
+          setIsLoading={setIsLoading}
+        />
       </div>
     </>
   );

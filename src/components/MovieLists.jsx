@@ -7,9 +7,11 @@ export default function MovieLists({
   addToWatchlists,
   watched,
   isLoading,
+  setIsLoading,
   error,
   handleSelectedMovie,
-  selected
+  selected,
+  setError,
 }) {
   return (
     <>
@@ -57,6 +59,9 @@ export default function MovieLists({
                   watched={watched}
                   handleSelectedMovie={handleSelectedMovie}
                   selected={selected}
+                  setError={setError}
+                  isLoading={isLoading}
+                  setIsLoading={setIsLoading}
                 />
               ))}
           </div>

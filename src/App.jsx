@@ -17,7 +17,7 @@ function App() {
   const [searchMovie, setSearchMovie] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
-  const [selectedMovie, setSelectedMovie] = useState({})
+  const [selectedMovie, setSelectedMovie] = useState("")
 
   const API_KEY = import.meta.env.VITE_OMDB_API_KEY
 
@@ -72,8 +72,9 @@ function App() {
     setWatched([...watched, newWatchedMovie])
   }
 
-  function handleSelectedMovie(value) {
-    setSelectedMovie(value);
+  function handleSelectedMovie(id) {
+    console.log(id)
+    setSelectedMovie(id);
   }
 
   return (
@@ -95,9 +96,11 @@ function App() {
           watched={watched}
           addToWatchlists={addToWatchlists}
           isLoading={isLoading}
+          setIsLoading={setIsLoading}
           error={error}
           handleSelectedMovie={handleSelectedMovie}
           selected={selectedMovie}
+          setError={setError}
         />
         <WatchedLists watched={watched} />
       </div>
