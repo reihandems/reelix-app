@@ -5,18 +5,18 @@ import {faCircleCheck, faShareNodes} from "@fortawesome/free-solid-svg-icons"
 
 import MovieDetailLoader from "./MovieDetailLoader";
 
-export default function MovieDetail({ selected, setError}) {
+export default function MovieDetail({ selected, setError, isWatched, addToWatchlists }) {
   const [movie, setMovie] = useState({});
-  const [isLoading, setIsLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(false);
 
   const API_KEY = import.meta.env.VITE_OMDB_API_KEY;
 
-  console.log(movie)
+  console.log(movie);
 
   useEffect(() => {
     async function fetchDetail() {
       try {
-        setIsLoading(true)
+        setIsLoading(true);
 
         if (selected === "" || movie === "") return;
 
@@ -32,12 +32,10 @@ export default function MovieDetail({ selected, setError}) {
         setMovie(data);
 
         console.log(data);
-      }
-      catch (error) {
+      } catch (error) {
         setError(error.message);
-      } 
-      finally {
-        setIsLoading(false)
+      } finally {
+        setIsLoading(false);
       }
     }
 
@@ -75,10 +73,13 @@ export default function MovieDetail({ selected, setError}) {
                   </div>
 
                   <div className="flex gap-2">
-                    <div className="btn btn-primary text-black flex-1 ">
+                    <button
+                      className={`btn ${isWatched ? "btn-disabled" : ""} btn-primary text-black flex-1`}
+                      onClick={() => addToWatchlists(movie)}
+                    >
                       <FontAwesomeIcon icon={faCircleCheck} />
-                      Mark as Watched
-                    </div>
+                      Mark{isWatched ? 'ed' : ''} as Watched
+                    </button>
                     <div className="btn">
                       <FontAwesomeIcon icon={faShareNodes} />
                     </div>
@@ -102,7 +103,9 @@ export default function MovieDetail({ selected, setError}) {
                     </div>
                     <div className="stat">
                       <div className="stat-title">Writer</div>
-                      <div className="stat-value text-sm text-wrap">{movie.Writer}</div>
+                      <div className="stat-value text-sm text-wrap">
+                        {movie.Writer}
+                      </div>
                     </div>
                   </div>
                 </div>

@@ -56,6 +56,8 @@ export default function MovieCard({
           setError={setError}
           isLoading={isLoading}
           setIsLoading={setIsLoading}
+          isWatched={isWatched}
+          addToWatchlists={addToWatchlists}
         />
       </div>
     </>
