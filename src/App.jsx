@@ -73,7 +73,6 @@ function App() {
   }
 
   function handleSelectedMovie(value) {
-    console.log(value);
     setSelectedMovie(value);
   }
 
