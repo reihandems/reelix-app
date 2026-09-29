@@ -1,4 +1,5 @@
 import WatchedCard from "./WatchedCard";
+import EmptyWatched from "./EmptyWatched";
 
 export default function WatchedLists({watched}) {
     return (
@@ -14,9 +15,13 @@ export default function WatchedLists({watched}) {
           </div>
 
           <div className="flex flex-wrap gap-5">
-            {watched?.map((watch) => (
-              <WatchedCard key={watch.imdbID} watch={watch} />
-            ))}
+            {watched.length === 0 ? (
+              <EmptyWatched />
+            ) : (
+              watched?.map((watch) => (
+                <WatchedCard key={watch.imdbID} watch={watch} />
+              ))
+            )}
           </div>
         </div>
       </>

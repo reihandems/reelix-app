@@ -41,8 +41,21 @@ export default function MovieDetail({ selected, setError, addToWatchlists, watch
   }, [selected]);
 
   const isWatched = watched.some((w) => w.imdbID === movie.imdbID);
-  
 
+  function handleClick() {
+    const newWatchedMovie = {
+      imdbID: movie.imdbID,
+      Poster: movie.Poster,
+      Title: movie.Title,
+      Year: movie.Year,
+      Runtime: movie.Runtime.split(" ").at(0),
+      imdbRating: movie.imdbRating,
+      userRating: 0,
+    };
+
+    addToWatchlists(newWatchedMovie)
+  }
+  
   return (
     <>
       <dialog id="movieDetail" className="modal modal-bottom sm:modal-middle">
@@ -76,7 +89,7 @@ export default function MovieDetail({ selected, setError, addToWatchlists, watch
                   <div className="flex gap-2">
                     <button
                       className={`btn ${isWatched ? "btn-disabled" : ""} btn-primary text-black flex-1`}
-                      onClick={() => addToWatchlists(movie)}
+                      onClick={handleClick}
                     >
                       <FontAwesomeIcon icon={faCircleCheck} />
                       Mark{isWatched ? 'ed' : ''} as Watched

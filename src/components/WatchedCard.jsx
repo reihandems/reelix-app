@@ -1,3 +1,6 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUser } from "@fortawesome/free-regular-svg-icons";
+
 export default function WatchedCard({ watch }) {
   return (
     <>
@@ -15,10 +18,18 @@ export default function WatchedCard({ watch }) {
           </span>
           <h2 className="card-title">{watch.Title}</h2>
           <p className="text-sm font-semibold text-gray-500">{watch.Year} • {watch.runtime} min</p>
-          <p className="text-sm text-gray-500">
-            ⭐ <span className="font-bold text-white">{watch.userRating}</span>
-            /10
-          </p>
+
+          <div className="flex">
+            <p className="text-sm text-gray-500">
+              ⭐ <span className="font-bold text-white">{watch.imdbRating}</span>
+              /10
+            </p>
+            <div className="divider divider-horizontal"></div>
+            <p className="text-sm text-gray-500">
+              <FontAwesomeIcon icon={faUser} /> <span className="font-bold text-white">{watch.userRating}</span>
+              /10
+            </p>
+          </div>
         </div>
       </div>
     </>

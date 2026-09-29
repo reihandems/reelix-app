@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 import MovieData from "./tempMovieData.json"
-import WatchedData from "./tempWatchedData.json"
+// import WatchedData from "./tempWatchedData.json"
 
 import NavBar from "./components/NavBar";
 import Hero from "./components/Hero";
@@ -13,7 +13,7 @@ import WatchedLists from "./components/WatchedLists";
 function App() {
   const [query, setQuery] = useState("")
   const [movies, setMovies] = useState(MovieData);
-  const [watched, setWatched] = useState(WatchedData);
+  const [watched, setWatched] = useState([]);
   const [searchMovie, setSearchMovie] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
@@ -62,14 +62,7 @@ function App() {
   }
 
   function addToWatchlists(movie) {
-    const newWatchedMovie = {
-      ...movie,
-      runtime: 0,
-      imdbRating: 0,
-      userRating: 0
-    };
-
-    setWatched([...watched, newWatchedMovie])
+    setWatched([...watched, movie])
   }
 
   function handleSelectedMovie(id) {

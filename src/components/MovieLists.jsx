@@ -13,6 +13,8 @@ export default function MovieLists({
   selected,
   setError,
 }) {
+
+  console.log(movies)
   return (
     <>
       <div className="col-span-6 md:col-span-4 flex flex-col gap-5">

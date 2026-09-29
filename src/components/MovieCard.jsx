@@ -1,6 +1,3 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCirclePlus, faCircleCheck } from "@fortawesome/free-solid-svg-icons";
-
 import MovieDetail from "./MovieDetail";
 
 export default function MovieCard({
@@ -13,7 +10,6 @@ export default function MovieCard({
   isLoading,
   setIsLoading,
 }) {
-  const isWatched = watched.some((w) => w.imdbID === movie.imdbID);
 
   return (
     <>
@@ -41,14 +37,6 @@ export default function MovieCard({
           >
             {movie.Title}
           </h2>
-
-          <button
-            className={`btn ${isWatched ? "btn-disabled" : ""}`}
-            onClick={() => addToWatchlists(movie)}
-          >
-            <FontAwesomeIcon icon={isWatched ? faCircleCheck : faCirclePlus} />
-            Add{isWatched ? "ed" : ""} To Watched
-          </button>
         </div>
 
         <MovieDetail
@@ -56,7 +44,6 @@ export default function MovieCard({
           setError={setError}
           isLoading={isLoading}
           setIsLoading={setIsLoading}
-          isWatched={isWatched}
           addToWatchlists={addToWatchlists}
           watched={watched}
         />
