@@ -1,7 +1,7 @@
 export default function EmptyWatched() {
     return (
       <>
-        <div className="border-2 border-dashed text-gray-600 w-full flex flex-col">
+        <div className="border-2 border-dashed text-gray-700 w-full flex flex-col">
           <div className="flex flex-col gap-5 p-6">
             <div className="flex w-full flex-col gap-4">
               <div className="h-32 w-full border-2 border-dashed"></div>

@@ -66,7 +66,6 @@ function App() {
   }
 
   function handleSelectedMovie(id) {
-    console.log(id)
     setSelectedMovie(id);
   }
 
@@ -87,6 +86,7 @@ function App() {
         <MovieLists
           movies={movies}
           watched={watched}
+          setWatched={setWatched}
           addToWatchlists={addToWatchlists}
           isLoading={isLoading}
           setIsLoading={setIsLoading}

@@ -12,9 +12,9 @@ export default function MovieLists({
   handleSelectedMovie,
   selected,
   setError,
+  setWatched,
 }) {
-
-  console.log(movies)
+  
   return (
     <>
       <div className="col-span-6 md:col-span-4 flex flex-col gap-5">
@@ -59,6 +59,7 @@ export default function MovieLists({
                   movie={movie}
                   addToWatchlists={addToWatchlists}
                   watched={watched}
+                  setWatched={setWatched}
                   handleSelectedMovie={handleSelectedMovie}
                   selected={selected}
                   setError={setError}

@@ -4,10 +4,19 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faCircleCheck, faShareNodes} from "@fortawesome/free-solid-svg-icons"
 
 import MovieDetailLoader from "./MovieDetailLoader";
+import Rating from "./Rating";
 
-export default function MovieDetail({ selected, setError, addToWatchlists, watched }) {
+export default function MovieDetail({
+  selected,
+  setError,
+  addToWatchlists,
+  watched,
+  setWatched,
+}) {
+
   const [movie, setMovie] = useState({});
   const [isLoading, setIsLoading] = useState(false);
+  const [rating, setRating] = useState(0);
 
   const API_KEY = import.meta.env.VITE_OMDB_API_KEY;
 
@@ -29,7 +38,6 @@ export default function MovieDetail({ selected, setError, addToWatchlists, watch
         const data = await response.json();
         setMovie(data);
 
-        console.log(data);
       } catch (error) {
         setError(error.message);
       } finally {
@@ -53,9 +61,28 @@ export default function MovieDetail({ selected, setError, addToWatchlists, watch
       userRating: 0,
     };
 
-    addToWatchlists(newWatchedMovie)
+    addToWatchlists(newWatchedMovie);
   }
-  
+
+  function handleRate() {
+    const newRated = watched.map((watch) => {
+      if (watch.imdbID === movie.imdbID) {
+        return {
+          ...watch,
+          userRating: rating,
+        };
+      }
+
+      return watch;
+    });
+
+    setWatched(newRated);
+  }
+
+  const isRated = watched.some((watch) => 
+    watch.imdbID === movie.imdbID && watch.userRating > 0
+  );
+
   return (
     <>
       <dialog id="movieDetail" className="modal modal-bottom sm:modal-middle">
@@ -72,7 +99,7 @@ export default function MovieDetail({ selected, setError, addToWatchlists, watch
               <img src={movie.Poster} alt="" className="w-full object-cover" />
 
               <div className="flex flex-col p-6">
-                <div className="flex sm:flex-row flex-col justify-between font-jakarta gap-5 items-center">
+                <div className="flex sm:flex-row flex-col justify-between font-jakarta gap-5 sm:items-center">
                   <div className="flex flex-col gap-2">
                     <div className="flex">
                       <div className="text-gray-500 font-semibold text-xs">
@@ -86,13 +113,13 @@ export default function MovieDetail({ selected, setError, addToWatchlists, watch
                     </div>
                   </div>
 
-                  <div className="flex gap-2">
+                  <div className="flex gap-2 w-full sm:w-auto">
                     <button
                       className={`btn ${isWatched ? "btn-disabled" : ""} btn-primary text-black flex-1`}
                       onClick={handleClick}
                     >
                       <FontAwesomeIcon icon={faCircleCheck} />
-                      Mark{isWatched ? 'ed' : ''} as Watched
+                      Mark{isWatched ? "ed" : ""} as Watched
                     </button>
                     <div className="btn">
                       <FontAwesomeIcon icon={faShareNodes} />
@@ -141,6 +168,31 @@ export default function MovieDetail({ selected, setError, addToWatchlists, watch
                     ))}
                   </div>
                 </div>
+
+                {isWatched && (
+                  <div className="flex mt-5">
+                    <div className="stats bg-base-200/50 shadow-sm/15 w-full flex justify-between">
+                      <div className="stat">
+                        <div className="stat-title mb-3">Rate The Movie</div>
+                        <div className="flex gap-3">
+                          <Rating setRating={setRating} />
+                          <p className="text-gray-500">
+                            <span className="text-white font-bold">{rating}</span>
+                            /10
+                          </p>
+                        </div>
+                        {rating > 0 && (
+                          <div
+                            className={`btn ${isRated ? 'btn-disabled' : ''} btn-primary text-black mt-3`}
+                            onClick={handleRate}
+                          >
+                            Rate{isRated ? 'd' : ''}
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                )}
               </div>
             </>
           )}

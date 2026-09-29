@@ -9,6 +9,7 @@ export default function MovieCard({
   setError,
   isLoading,
   setIsLoading,
+  setWatched,
 }) {
 
   return (
@@ -40,12 +41,14 @@ export default function MovieCard({
         </div>
 
         <MovieDetail
+          key={selected}
           selected={selected}
           setError={setError}
           isLoading={isLoading}
           setIsLoading={setIsLoading}
           addToWatchlists={addToWatchlists}
           watched={watched}
+          setWatched={setWatched}
         />
       </div>
     </>
