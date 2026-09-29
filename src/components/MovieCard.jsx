@@ -1,15 +1,6 @@
-import MovieDetail from "./MovieDetail";
-
 export default function MovieCard({
   movie,
-  addToWatchlists,
-  watched,
   handleSelectedMovie,
-  selected,
-  setError,
-  isLoading,
-  setIsLoading,
-  setWatched,
 }) {
 
   return (
@@ -39,17 +30,6 @@ export default function MovieCard({
             {movie.Title}
           </h2>
         </div>
-
-        <MovieDetail
-          key={selected}
-          selected={selected}
-          setError={setError}
-          isLoading={isLoading}
-          setIsLoading={setIsLoading}
-          addToWatchlists={addToWatchlists}
-          watched={watched}
-          setWatched={setWatched}
-        />
       </div>
     </>
   );

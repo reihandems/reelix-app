@@ -13,7 +13,6 @@ export default function MovieDetail({
   watched,
   setWatched,
 }) {
-
   const [movie, setMovie] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [rating, setRating] = useState(0);
@@ -37,7 +36,6 @@ export default function MovieDetail({
 
         const data = await response.json();
         setMovie(data);
-
       } catch (error) {
         setError(error.message);
       } finally {
@@ -47,6 +45,20 @@ export default function MovieDetail({
 
     fetchDetail();
   }, [selected]);
+
+  // Hook untuk title dinamis
+  useEffect(() => {
+    if (!movie.Title) return;
+
+    document.title = `Reelix - ${movie.Title}`;
+  }, [movie.Title]);
+
+  useEffect(() => {
+    if (!selected) return;
+
+    document.getElementById("movieDetail").showModal();
+
+  }, [selected])
 
   const isWatched = watched.some((w) => w.imdbID === movie.imdbID);
 
@@ -79,8 +91,8 @@ export default function MovieDetail({
     setWatched(newRated);
   }
 
-  const isRated = watched.some((watch) => 
-    watch.imdbID === movie.imdbID && watch.userRating > 0
+  const isRated = watched.some(
+    (watch) => watch.imdbID === movie.imdbID && watch.userRating > 0,
   );
 
   return (
@@ -177,16 +189,18 @@ export default function MovieDetail({
                         <div className="flex gap-3">
                           <Rating setRating={setRating} />
                           <p className="text-gray-500">
-                            <span className="text-white font-bold">{rating}</span>
+                            <span className="text-white font-bold">
+                              {rating}
+                            </span>
                             /10
                           </p>
                         </div>
                         {rating > 0 && (
                           <div
-                            className={`btn ${isRated ? 'btn-disabled' : ''} btn-primary text-black mt-3`}
+                            className={`btn ${isRated ? "btn-disabled" : ""} btn-primary text-black mt-3`}
                             onClick={handleRate}
                           >
-                            Rate{isRated ? 'd' : ''}
+                            Rate{isRated ? "d" : ""}
                           </div>
                         )}
                       </div>

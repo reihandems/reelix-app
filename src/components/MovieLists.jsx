@@ -1,6 +1,7 @@
 import MovieCard from "./MovieCard";
 import Loader from "./Loader";
 import ErrorBadge from "./ErrorBadge";
+import MovieDetail from "./MovieDetail";
 
 export default function MovieLists({
   movies,
@@ -69,6 +70,17 @@ export default function MovieLists({
               ))}
           </div>
         )}
+
+        <MovieDetail
+          key={selected}
+          selected={selected}
+          setError={setError}
+          isLoading={isLoading}
+          setIsLoading={setIsLoading}
+          addToWatchlists={addToWatchlists}
+          watched={watched}
+          setWatched={setWatched}
+        />
       </div>
     </>
   );
