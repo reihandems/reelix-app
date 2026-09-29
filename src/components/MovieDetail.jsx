@@ -51,6 +51,7 @@ export default function MovieDetail({
     if (!movie.Title) return;
 
     document.title = `Reelix - ${movie.Title}`;
+
   }, [movie.Title]);
 
   useEffect(() => {
@@ -97,7 +98,9 @@ export default function MovieDetail({
 
   return (
     <>
-      <dialog id="movieDetail" className="modal modal-bottom sm:modal-middle">
+      <dialog id="movieDetail" className="modal modal-bottom sm:modal-middle" onClose={() => {
+        document.title = "Reelix"
+      }}>
         <div className="modal-box p-0 sm:w-11/12 max-w-5xl">
           <form method="dialog">
             {/* if there is a button in form, it will close the modal */}
