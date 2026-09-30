@@ -30,7 +30,7 @@ export default function WatchedCard({ watch, onDeleteWatched }) {
           </span>
           <h2 className="card-title">{watch.Title}</h2>
           <p className="text-sm font-semibold text-gray-500">
-            {watch.Year} • {watch.runtime} min
+            {watch.Year} • {watch.Runtime} min
           </p>
 
           <div className="flex">

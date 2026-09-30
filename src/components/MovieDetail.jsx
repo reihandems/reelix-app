@@ -46,7 +46,7 @@ export default function MovieDetail({
     fetchDetail();
   }, [selected]);
 
-  // Hook untuk title dinamis
+  // Hook for dynamic title
   useEffect(() => {
     if (!movie.Title) return;
 
